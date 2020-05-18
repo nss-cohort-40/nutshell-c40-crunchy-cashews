@@ -1,0 +1,13 @@
+header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+
+#register-form, #login-form, h1 {
+  flex-basis: 33%;
+}
+
+header {
+  background-color: darkgreen;
+}
