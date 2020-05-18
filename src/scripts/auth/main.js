@@ -1,4 +1,3 @@
-
 // Adds event listener to Register button (ER)
 const registerButton = document.querySelector("#register")
 registerButton.addEventListener("click", event => {
@@ -29,3 +28,5 @@ function createRegisterForm () {
   </fieldset> 
   `
 }
+
+// TODO Factory Function 
