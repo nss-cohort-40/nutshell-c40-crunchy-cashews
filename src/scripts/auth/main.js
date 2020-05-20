@@ -1,6 +1,7 @@
 // import saveRegisterBtn from "./registerObj.js";
 
 import API from "./data.js";
+// import navBar from "/src/scripts/messages/main.js"
 
 // Adds event listener to Register button (ER)
 const welcome = document.querySelector("#welcome");
@@ -32,8 +33,8 @@ registerButton.addEventListener("click", (event) => {
       const clearRegister = document.querySelector("#register-form")
       clearRegister.innerHTML = "";
       createNav();
-    }
-  });
+      }
+    });
 });
 
 // Function to render the register form to the DOM (ER)
@@ -70,14 +71,17 @@ function createRegisterForm() {
   `
 };
 
+// function to create Nav Bar (ER)
 const nav = document.querySelector("#nav-bar")
 function createNav() {
   return nav.innerHTML += `
   <ul>
   <li><a class="active" href="#home">Home</a></li>
-  <li><a href="#news">News</a></li>
-  <li><a href="#contact">Contact</a></li>
-  <li><a href="#about">About</a></li>
+  <li><a href="#messages" id="messages">Messages</a></li>
+  <li><a href="#news" id="news">News</a></li>
+  <li><a href="#tasks" id="tasks">Tasks</a></li>
+  <li><a href="#events" id="events">Events</a></li>
+  <li><a href="#friends" id="friends">Friends</a></li>
   </ul>
   `
 }
@@ -90,31 +94,39 @@ function createNewUser(username, email, password) {
   };
 }
 
-const loginButton = document.querySelector("#login-button")
-loginButton.addEventListener("click", event => {
-  let usernameLogin = document.querySelector("#username-login").value;
-  let passwordLogin = document.querySelector("#password-login").value;
-  API.getAllUsers()
-    .then(users => {
-      users.forEach(user => {
-        if (user.username === usernameLogin && user.password === passwordLogin) {
-          console.log("Console Logging entry.id", user.id)
-          sessionStorage.setItem("activeUser", user.id) 
-     }
-   })
-  })
-})
 
-// <form id="form">
-// <fieldset>
-//   <label for="email">Email:</label>
-//   <input type="email" id="emailInput">
-//   <label for="username">Username:</label>
-//   <input type="text" id="usernameInput">
-//   <label for="password">Password:</label>
-//   <input type="password" id="passwordInput">
-//   <label for="password-confirmation">Confirm Password:</label>
-//   <input type="password" id="passwordConfirmInput">
-//   <button id="saveRegister">Register</button>
-// </fieldset> 
-// </form>
+// NAV BAR EVENT LISTENER FOR EACH SECTION
+const navBar = {
+  render () {
+    let nav = document.querySelector("#nav-bar")
+    nav.addEventListener("click", event => {
+      if (event.target.id.startsWith("messages")) {
+        console.log("clicked messages")
+      } else if (event.target.id.startsWith("news")) {
+        console.log("clicked news")
+      } else if (event.target.id.startsWith("events")) {
+        console.log("clicked events")
+      } else if (event.target.id.startsWith("tasks")) {
+        console.log("clicked tasks")
+      }
+    })
+  }
+}
+
+navBar.render();
+
+// EVENT LISTENER FOR LOGIN BUTTON THAT DOESNT WORK YET
+// const loginButton = document.querySelector("#login-button")
+// loginButton.addEventListener("click", event => {
+//   let usernameLogin = document.querySelector("#username-login").value;
+//   let passwordLogin = document.querySelector("#password-login").value;
+//   API.getAllUsers()
+//     .then(users => {
+//       users.forEach(user => {
+//         if (user.username === usernameLogin && user.password === passwordLogin) {
+//           console.log("Console Logging entry.id", user.id)
+//           sessionStorage.setItem("activeUser", user.id) 
+//      }
+//    })
+//   })
+// })

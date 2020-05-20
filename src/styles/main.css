@@ -1,11 +1,16 @@
+img {
+  height: 200px;
+  width: 200px;
+}
+
 header {
   display: flex;
   flex-direction: row;
-  justify-content: space-around;
+  justify-content: space-between;
 }
 
-#register-form, #login-form, h1 {
-  flex-basis: 33%;
+#login-form {
+  flex-basis: 25%;
 }
 
 header {
@@ -81,7 +86,7 @@ ul {
   list-style-type: none;
   margin: 0;
   padding: 0;
-  width: 25%;
+  width: 15%;
   background-color: #f1f1f1;
   position: fixed;
   height: 100%;
