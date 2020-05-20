@@ -1,18 +1,27 @@
 // Get the data from the db
-function getAllArticles() {
+
+const Api = {
+  getAllArticles() {
     return fetch("http://localhost:8080/news")
     .then(articles => articles.json())
-  }
-  
-  function addNewArticle(articleObject) {
+  },
+    addNewArticle(newArticle) {
     return fetch("http://localhost:8080/news", {
       method: "POST",
       headers:{
         "Content-Type": "application/json"
       },
-      body: JSON.stringify(articleObject)
+      body: JSON.stringify(newArticle)
     })
-  }
+  },
+  deleteArticle(newsId) {
+    return fetch(`http://localhost:8088/news/${newsId}`, {
+        method: "DELETE"
+    })
+    .then(response => response.json())
+}
+}
+
   
-  export default { getAllArticles, addNewArticle }
+  export default api
   
