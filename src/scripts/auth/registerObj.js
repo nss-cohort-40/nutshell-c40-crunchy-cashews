@@ -6,7 +6,11 @@ const API = {
         "Content-Type": "application/json",
       },
       body: JSON.stringify(createNewUser),
-    }).then((response) => response.json());
+    })
+      .then((response) => response.json())
+      .then((user) => {
+        sessionStorage.setItem("activeUser", user.id);
+      });
   },
   getAllUsers() {
     return fetch("http://localhost:8080/users").then((response) =>

@@ -3,13 +3,13 @@
 import API from "./registerObj.js";
 
 // Adds event listener to Register button (ER)
+const welcome = document.querySelector("#welcome");
 const registerButton = document.querySelector("#register");
 registerButton.addEventListener("click", (event) => {
+  welcome.innerHTML = "";
   renderRegisterForm();
-  console.log("clicked");
   // Register Btn for new users => create new users
   const saveRegisterBtn = document.querySelector("#saveRegister");
-
   saveRegisterBtn.addEventListener("click", (event) => {
     event.preventDefault();
     let newEmail = document.querySelector("#emailInput").value;
