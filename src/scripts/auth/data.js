@@ -12,7 +12,7 @@ const API = {
         sessionStorage.setItem("activeUser", user.id);
       });
   },
-  getUser() {
+  getAllUsers() {
     return fetch("http://localhost:8080/users").then((response) =>
       response.json()
     );
