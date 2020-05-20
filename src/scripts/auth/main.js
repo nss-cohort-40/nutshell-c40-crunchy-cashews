@@ -1,6 +1,6 @@
 // import saveRegisterBtn from "./registerObj.js";
 
-import API from "./registerObj.js";
+import API from "./data.js";
 
 // Adds event listener to Register button (ER)
 const welcome = document.querySelector("#welcome");
