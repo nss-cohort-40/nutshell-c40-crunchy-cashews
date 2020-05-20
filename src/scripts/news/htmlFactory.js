@@ -12,7 +12,15 @@ const createNewArticle = (url, title, synopsis, timestamp) => {
     return newArticle
 }
 
+const makeArticle = (article) => {
+    return `
+      <h3><b><em></em>${article.title}</em></b></h3>
+      <p class="articleLink">${article.url}</p>
+      <p class="articleSynopsis">${article.synopsis}</p>
+      <p class="mood">Current Mood: ${article.mood}</p>
+      `
+  };
 
 
 
-export default createNewArticle
+export default {createNewArticle, makeArticle}
