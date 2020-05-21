@@ -1,6 +1,8 @@
 // import saveRegisterBtn from "./registerObj.js";
 
 import API from "./data.js";
+import api from "../news/data.js"
+
 // import navBar from "/src/scripts/messages/main.js"
 
 // Adds event listener to Register button (ER)
@@ -78,7 +80,8 @@ function createNav() {
   <ul>
   <li><a class="active" href="#home">Home</a></li>
   <li><a href="#messages" id="messages">Messages</a></li>
-  <li><a href="#news" id="news">News</a></li>
+  <li><a href="#news" id="news">News</a>
+  </li>
   <li><a href="#tasks" id="tasks">Tasks</a></li>
   <li><a href="#events" id="events">Events</a></li>
   <li><a href="#friends" id="friends">Friends</a></li>
@@ -102,6 +105,7 @@ const navBar = {
     nav.addEventListener("click", event => {
       if (event.target.id.startsWith("messages")) {
         console.log("clicked messages")
+        
       } else if (event.target.id.startsWith("news")) {
         console.log("clicked news")
       } else if (event.target.id.startsWith("events")) {
