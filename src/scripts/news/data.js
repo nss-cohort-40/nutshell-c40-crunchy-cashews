@@ -1,10 +1,9 @@
 // Api Manager for News -RN
-const currentUser= parseInt(sessionStorage.getItem("activeUser"))
 
 const newsApi = {
   getAllArticles() {
     return fetch("http://localhost:8080/news")
-    .then(articles => articles.json())
+    .then(resp => resp.json())
   },
     addNewArticle(newArticle) {
     return fetch("http://localhost:8080/news", {
@@ -13,10 +12,9 @@ const newsApi = {
         "Content-Type": "application/json"
       },
       body: JSON.stringify(newArticle)
-    })
+   })
  
-}
-}
+}};
 
   
   export default newsApi

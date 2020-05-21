@@ -1,5 +1,8 @@
 // import saveRegisterBtn from "./registerObj.js";
 import API from "./data.js";
+import newsApi from "../news/main.js"
+import renderNews from "../news/render.js"
+
 
 
 // import navBar from "/src/scripts/messages/main.js"

@@ -23,3 +23,5 @@ newsApi.addNewArticle(makeNewArticle)
 });
 
 newsApi.getAllArticles().then(renderNews);
+
+export default recordArticle
