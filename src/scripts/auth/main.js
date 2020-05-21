@@ -67,7 +67,7 @@ function createRegisterForm() {
     <label for="psw-repeat"><b>Repeat Password</b></label>
     <input type="password" id="passwordConfirmInput" placeholder="Repeat Password" name="psw-repeat" required>
 
-    <button type="submit" class="registerbtn" id="saveRegister">Register</button>
+    <button type="submit" class="registerBtn" id="saveRegister">Register</button>
   </div>
   </form>
   `;
@@ -103,7 +103,7 @@ const navBar = {
     let nav = document.querySelector("#nav-bar");
     nav.addEventListener("click", (event) => {
       if (event.target.id.startsWith("messages")) {
-        console.log("clicked messages");
+        messageAPI.getAllMessages().then(renderForms.renderRegisterForms);
       } else if (event.target.id.startsWith("news")) {
         newsApi.getAllArticles().then(renderNews);
       } else if (event.target.id.startsWith("events")) {
