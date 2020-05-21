@@ -1,6 +1,6 @@
 // Api Manager for News
 
-const Api = {
+const newsApi = {
   getAllArticles() {
     return fetch("http://localhost:8080/news")
     .then(articles => articles.json())
@@ -15,7 +15,8 @@ const Api = {
     })
  
 }
+}
 
   
-  export default Api
+  export default newsApi
   
