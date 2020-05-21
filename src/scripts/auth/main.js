@@ -1,7 +1,9 @@
 import API from "./data.js";
+import tasksHTML from "../tasks/htmlFactory.js";
+// import navBar from "/src/scripts/messages/main.js"
 import eventsAPI from "../events/data.js";
-import render from "/src/scripts/events/render.js"
-import events from "/src/scripts/events/main.js"
+import render from "/src/scripts/events/render.js";
+import events from "/src/scripts/events/main.js";
 
 // Adds event listener to Register button (ER)
 const welcome = document.querySelector("#welcome");
@@ -25,16 +27,16 @@ registerButton.addEventListener("click", (event) => {
       API.getAllUsers().then((users) => {
         const foundUser = users.find((user) => user.email === newEmail);
         if (foundUser === undefined) {
-          API.saveNewUser(newUser)
+          API.saveNewUser(newUser);
           createNav();
-          const clearRegister = document.querySelector("#register-form")
+          const clearRegister = document.querySelector("#register-form");
           clearRegister.innerHTML = "";
         } else {
           window.alert("Email already taken");
         }
       });
-      }
-    });
+    }
+  });
 });
 
 // Function to render the register form to the DOM (ER)
@@ -68,13 +70,13 @@ function createRegisterForm() {
     <button type="submit" class="registerBtn" id="saveRegister">Register</button>
   </div>
   </form>
-  `
-};
+  `;
+}
 
 // function to create Nav Bar (ER)
-const nav = document.querySelector("#nav-bar")
+const nav = document.querySelector("#nav-bar");
 function createNav() {
-  return nav.innerHTML += `
+  return (nav.innerHTML += `
   <ul>
   <li><a class="active" href="#home">Home</a></li>
   <li><a href="#messages" id="messages">Messages</a></li>
@@ -84,7 +86,7 @@ function createNav() {
   <li><a href="#events" id="events">Events</a></li>
   <li><a href="#friends" id="friends">Friends</a></li>
   </ul>
-  `
+  `);
 }
 
 function createNewUser(username, email, password) {
@@ -95,30 +97,30 @@ function createNewUser(username, email, password) {
   };
 }
 
-
 // NAV BAR EVENT LISTENER FOR EACH SECTION
 const navBar = {
-  render () {
-    let nav = document.querySelector("#nav-bar")
-    nav.addEventListener("click", event => {
+  render() {
+    let nav = document.querySelector("#nav-bar");
+    nav.addEventListener("click", (event) => {
       if (event.target.id.startsWith("messages")) {
-        messageAPI.getAllMessages()
-        .then(renderForms.renderRegisterForms)
+        messageAPI.getAllMessages().then(renderForms.renderRegisterForms);
       } else if (event.target.id.startsWith("news")) {
         newsApi.getAllArticles().then(renderNews);
       } else if (event.target.id.startsWith("events")) {
-        eventsAPI.getEvents()
-        .then(render.eventsResults);
+        eventsAPI.getEvents().then(render.eventsResults);
         render.addEvent();
         events.addEventEL();
         events.saveEventEL();
-        console.log("clicked events")
+        console.log("clicked events");
       } else if (event.target.id.startsWith("tasks")) {
-        console.log("clicked tasks")
+        console.log("clicked tasks");
+        tasksHTML.btnNewTask();
+        tasksHTML.renderTaskForm();
+        tasksHTML.saveTaskToDb();
       }
-    })
-  }
-}
+    });
+  },
+};
 
 navBar.render();
 
@@ -132,11 +134,8 @@ navBar.render();
 //       users.forEach(user => {
 //         if (user.username === usernameLogin && user.password === passwordLogin) {
 //           console.log("Console Logging entry.id", user.id)
-//           sessionStorage.setItem("activeUser", user.id) 
+//           sessionStorage.setItem("activeUser", user.id)
 //      }
 //    })
 //   })
 // })
-
-// (ER)
-

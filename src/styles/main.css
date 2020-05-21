@@ -26,10 +26,15 @@ header {
 }
 
 /* Register/Login form styling */
-body {font-family: Arial, Helvetica, sans-serif;}
-form {border: 3px solid #f1f1f1;}
+body {
+  font-family: Arial, Helvetica, sans-serif;
+}
+form {
+  border: 3px solid #f1f1f1;
+}
 
-input[type=text], input[type=password] {
+input[type="text"],
+input[type="password"] {
   width: 100%;
   padding: 12px 20px;
   margin: 8px 0;
@@ -46,7 +51,6 @@ button {
   border: none;
   cursor: pointer;
   /* width: 50%; */
-
 }
 
 button:hover {
@@ -81,11 +85,11 @@ span.psw {
 /* Change styles for span and cancel button on extra small screens */
 @media screen and (max-width: 300px) {
   span.psw {
-     display: block;
-     float: none;
+    display: block;
+    float: none;
   }
   .cancelbtn {
-     width: 100%;
+    width: 100%;
   }
 }
 /* end of register/login form styling */
@@ -127,7 +131,8 @@ li a:hover:not(.active) {
 }
 /* end of nav bar styling */
 
-#main-section, #other-section {
+#main-section,
+#other-section {
   margin-left: 20%;
 }
 
