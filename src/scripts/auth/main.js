@@ -80,7 +80,8 @@ function createNav() {
   <ul>
   <li><a class="active" href="#home">Home</a></li>
   <li><a href="#messages" id="messages">Messages</a></li>
-  <li><a href="#news" id="news">News</a></li>
+  <li><a href="#news" id="news">News</a>
+  </li>
   <li><a href="#tasks" id="tasks">Tasks</a></li>
   <li><a href="#events" id="events">Events</a></li>
   <li><a href="#friends" id="friends">Friends</a></li>
@@ -104,7 +105,7 @@ const navBar = {
       if (event.target.id.startsWith("messages")) {
         console.log("clicked messages");
       } else if (event.target.id.startsWith("news")) {
-        console.log("clicked news");
+        newsApi.getAllArticles().then(renderNews);
       } else if (event.target.id.startsWith("events")) {
         eventsAPI.getEvents().then(render.eventsResults);
         render.addEvent();
