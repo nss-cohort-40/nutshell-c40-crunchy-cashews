@@ -1,8 +1,7 @@
-// import saveRegisterBtn from "./registerObj.js";
-
 import API from "./data.js";
-import messageAPI from "/src/scripts/messages/data.js"
-import renderForms from "../messages/render.js";
+import eventsAPI from "../events/data.js";
+import render from "/src/scripts/events/render.js"
+import events from "/src/scripts/events/main.js"
 
 // Adds event listener to Register button (ER)
 const welcome = document.querySelector("#welcome");
@@ -18,7 +17,7 @@ registerButton.addEventListener("click", (event) => {
     let newUsername = document.querySelector("#usernameInput").value;
     let password = document.querySelector("#passwordInput").value;
     let passwordConfirm = document.querySelector("#passwordConfirmInput").value;
-    let newUser = createNewUser(newEmail, newUsername, password);
+    let newUser = createNewUser(newUsername, newEmail, password);
     if (password != passwordConfirm) {
       window.alert("Passwords don't match.");
       return false;
@@ -27,13 +26,13 @@ registerButton.addEventListener("click", (event) => {
         const foundUser = users.find((user) => user.email === newEmail);
         if (foundUser === undefined) {
           API.saveNewUser(newUser)
+          createNav();
+          const clearRegister = document.querySelector("#register-form")
+          clearRegister.innerHTML = "";
         } else {
           window.alert("Email already taken");
         }
       });
-      const clearRegister = document.querySelector("#register-form")
-      clearRegister.innerHTML = "";
-      createNav();
       }
     });
 });
@@ -79,7 +78,8 @@ function createNav() {
   <ul>
   <li><a class="active" href="#home">Home</a></li>
   <li><a href="#messages" id="messages">Messages</a></li>
-  <li><a href="#news" id="news">News</a></li>
+  <li><a href="#news" id="news">News</a>
+  </li>
   <li><a href="#tasks" id="tasks">Tasks</a></li>
   <li><a href="#events" id="events">Events</a></li>
   <li><a href="#friends" id="friends">Friends</a></li>
@@ -105,8 +105,13 @@ const navBar = {
         messageAPI.getAllMessages()
         .then(renderForms.renderRegisterForms)
       } else if (event.target.id.startsWith("news")) {
-        console.log("clicked news")
+        newsApi.getAllArticles().then(renderNews);
       } else if (event.target.id.startsWith("events")) {
+        eventsAPI.getEvents()
+        .then(render.eventsResults);
+        render.addEvent();
+        events.addEventEL();
+        events.saveEventEL();
         console.log("clicked events")
       } else if (event.target.id.startsWith("tasks")) {
         console.log("clicked tasks")
@@ -132,3 +137,6 @@ navBar.render();
 //    })
 //   })
 // })
+
+// (ER)
+
