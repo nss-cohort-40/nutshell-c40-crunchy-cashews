@@ -1,8 +1,9 @@
-// import saveRegisterBtn from "./registerObj.js";
-
 import API from "./data.js";
 import tasksHTML from "../tasks/htmlFactory.js";
 // import navBar from "/src/scripts/messages/main.js"
+import eventsAPI from "../events/data.js";
+import render from "/src/scripts/events/render.js";
+import events from "/src/scripts/events/main.js";
 
 // Adds event listener to Register button (ER)
 const welcome = document.querySelector("#welcome");
@@ -18,7 +19,7 @@ registerButton.addEventListener("click", (event) => {
     let newUsername = document.querySelector("#usernameInput").value;
     let password = document.querySelector("#passwordInput").value;
     let passwordConfirm = document.querySelector("#passwordConfirmInput").value;
-    let newUser = createNewUser(newEmail, newUsername, password);
+    let newUser = createNewUser(newUsername, newEmail, password);
     if (password != passwordConfirm) {
       window.alert("Passwords don't match.");
       return false;
@@ -27,13 +28,13 @@ registerButton.addEventListener("click", (event) => {
         const foundUser = users.find((user) => user.email === newEmail);
         if (foundUser === undefined) {
           API.saveNewUser(newUser);
+          createNav();
+          const clearRegister = document.querySelector("#register-form");
+          clearRegister.innerHTML = "";
         } else {
           window.alert("Email already taken");
         }
       });
-      const clearRegister = document.querySelector("#register-form");
-      clearRegister.innerHTML = "";
-      createNav();
     }
   });
 });
@@ -105,6 +106,10 @@ const navBar = {
       } else if (event.target.id.startsWith("news")) {
         console.log("clicked news");
       } else if (event.target.id.startsWith("events")) {
+        eventsAPI.getEvents().then(render.eventsResults);
+        render.addEvent();
+        events.addEventEL();
+        events.saveEventEL();
         console.log("clicked events");
       } else if (event.target.id.startsWith("tasks")) {
         console.log("clicked tasks");
