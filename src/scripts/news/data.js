@@ -1,4 +1,5 @@
-// Api Manager for News
+// Api Manager for News -RN
+const currentUser= parseInt(sessionStorage.getItem("activeUser"))
 
 const newsApi = {
   getAllArticles() {

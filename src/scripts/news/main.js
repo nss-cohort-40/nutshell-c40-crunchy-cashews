@@ -16,6 +16,7 @@ recordArticle.addEventListener("click", function() {
     const makeNewArticle = articleMaker(urlInput.value, titleInput.value, synopsisInput.value, timestampInput.value)
 
 
+
 newsApi.addNewArticle(makeNewArticle)
 .then(newsApi.getAllArticles).then(renderNews)
   

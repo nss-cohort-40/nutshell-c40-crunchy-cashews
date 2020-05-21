@@ -1,7 +1,6 @@
 // import saveRegisterBtn from "./registerObj.js";
-
 import API from "./data.js";
-import api from "../news/data.js"
+
 
 // import navBar from "/src/scripts/messages/main.js"
 
@@ -107,7 +106,7 @@ const navBar = {
         console.log("clicked messages")
         
       } else if (event.target.id.startsWith("news")) {
-        console.log("clicked news")
+        newsApi.getAllArticles().then(renderNews);
       } else if (event.target.id.startsWith("events")) {
         console.log("clicked events")
       } else if (event.target.id.startsWith("tasks")) {
