@@ -5,8 +5,8 @@ const newsApi = {
     return fetch("http://localhost:8080/news")
     .then(resp => resp.json())
   },
-    addNewArticle(newArticle) {
-    return fetch("http://localhost:8080/news", {
+    addNewArticle(newArticle){
+    return fetch("http://localhost:8080/news"`/${newArticle}`, {
       method: "POST",
       headers:{
         "Content-Type": "application/json"

@@ -22,7 +22,7 @@ const messageDomContainer = {
         <h3>Messages</h3>
         <section>${submittedMessage.chatHistory}</section>
         <button id="edit--${submittedMessage.id}">Edit</button>
-        <button id="save--${submittedMessage.id}">Save</button>
+        <button id="saveNews--${submittedMessage.id}">Save</button>
         </article>
         `
     }

@@ -1,27 +1,38 @@
 //Compile newsApi, articleMaker, and renderNewsArticle here - RN
 import newsApi from "./data.js"
-import articleMaker from "./htmlFactory.js"
-import renderNews from "./render.js"
+import newstoHTML from "./htmlFactory.js"
+
+const newsMain = {
+
+const recordArticle = document.querySelector("#other-section");
+
+recordArticle.addEventListener("click", (event) =>  {
+    if(event.target.id.startsWith("save--")) {
+    const newsArticle = event.target.id.split("--")[1]
+    newsApi.recordArticle(newsArticle)
+    }
+    }),
 
 
-const recordArticle = document.querySelector("#main-section");
+function getAndRenderAllArticles() {
+    recordArticle.innerHTML = ""
+    newsApi.getAllArticles().then(news => {
+        news.sort(sortAZ).map(newstoHTML).forEach(renderToDOM)
+    })
+return getAndRenderAllArticles()
 
-recordArticle.addEventListener("click", function() {
-    const urlInput = document.querySelector("#url");
-    const titleInput = document.querySelector("#title");
-    const synopsisInput = document.querySelector("#synopsis");
-    const timestampInput = document.querySelector("#timestamp");
-
-
-    const makeNewArticle = articleMaker(urlInput.value, titleInput.value, synopsisInput.value, timestampInput.value)
+},
 
 
+function renderToDOM(htmlRep) {
+    recordArticle.innerHTML += htmlRep;
+},
 
-newsApi.addNewArticle(makeNewArticle)
-.then(newsApi.getAllArticles).then(renderNews)
-  
-});
+function sortAZ(a, b){
+    return a.title.localeCompare(b.title)
+}
 
-newsApi.getAllArticles().then(renderNews);
 
-export default recordArticle
+}
+
+export default newsMain
