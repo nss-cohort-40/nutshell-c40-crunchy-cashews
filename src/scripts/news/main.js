@@ -1,27 +1,27 @@
-//Compile newsApi, articleMaker, and renderNewsArticle here - RN
+/*
+    Author: Roxanne
+    Purpose: EventListeners so new articles can be created and saved
+*/
 import newsApi from "./data.js"
-import articleMaker from "./htmlFactory.js"
-import renderNews from "./render.js"
+import renderArticles from "./render.js"
+import articleObject from "./main.js"
+
+const recordNewsArticle = () => {
+        const recordNewsButton = document.querySelector("#recordNews--btn");
+        recordNewsButton.addEventListener("click", function () {
+            const urlInput = document.querySelector("#newsURL");
+            const titleInput = document.querySelector("#newsTitle");
+            const synopsisInput = document.querySelector("#newsSynopsis");
+            const timestampInput = document.querySelector("#newsTimestamp");
+
+             const newArticle = articleObject(urlInput.value, titleInput.value, synopsisInput.value, timestampInput.value);
+
+                newsApi.recordNewsArticle(newArticle)
+                    .then(newsApi.getAllArticles).then(renderArticles)
+
+            newsApi.getAllArticles().then(renderArticles)
+        
+        }
 
 
-const recordArticle = document.querySelector("#main-section");
-
-recordArticle.addEventListener("click", function() {
-    const urlInput = document.querySelector("#url");
-    const titleInput = document.querySelector("#title");
-    const synopsisInput = document.querySelector("#synopsis");
-    const timestampInput = document.querySelector("#timestamp");
-
-
-    const makeNewArticle = articleMaker(urlInput.value, titleInput.value, synopsisInput.value, timestampInput.value)
-
-
-
-newsApi.addNewArticle(makeNewArticle)
-.then(newsApi.getAllArticles).then(renderNews)
-  
-});
-
-newsApi.getAllArticles().then(renderNews);
-
-export default recordArticle
+export default recordNewsArticle
