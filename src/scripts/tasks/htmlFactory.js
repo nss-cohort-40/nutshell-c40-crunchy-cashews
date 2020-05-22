@@ -1,7 +1,7 @@
 // Author: Kirk
 // Function: Uuhhh... put things on DOM and then
 // some other stuff that shouldn't be here I'm guessing.
-import API from "./data.js";
+import API from "/src/scripts/tasks/data.js";
 
 // let mainSection = document.querySelector("#main-section");
 // let otherSection = document.querySelector("#other-section");

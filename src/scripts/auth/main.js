@@ -1,14 +1,12 @@
 import API from "./data.js";
 import tasksHTML from "/src/scripts/tasks/htmlFactory.js";
 import taskCardEvents from "/src/scripts/tasks/main.js";
-import tasksAPI from "../tasks/data.js";
 // import navBar from "/src/scripts/messages/main.js"
 import eventsAPI from "/src/scripts/events/data.js";
-import render from "/src/sripts/events/render.js";
+import render from "/src/scripts/events/render.js";
 import events from "/src/scripts/events/main.js";
 import newsAPI from "../news/data.js";
-import renderNews from "../news/render.js"
-
+import renderNews from "../news/render.js";
 
 // Adds event listener to Register button (ER)
 const welcome = document.querySelector("#welcome");
@@ -110,8 +108,7 @@ const navBar = {
       if (event.target.id.startsWith("messages")) {
         messageAPI.getAllMessages().then(renderForms.renderRegisterForms);
       } else if (event.target.id.startsWith("news")) {
-        newsAPI.getAllArticles().then(renderNews.renderArticles)
-
+        newsAPI.getAllArticles().then(renderNews.renderArticles);
       } else if (event.target.id.startsWith("events")) {
         eventsAPI.getEvents().then(render.eventsResults);
         render.addEvent();

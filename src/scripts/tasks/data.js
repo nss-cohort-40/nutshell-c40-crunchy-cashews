@@ -1,4 +1,5 @@
-// KS
+// Author: Kirk
+// Purpose: get tasks from database and delete tasks from database
 
 const taskDatabase = "http://localhost:8080/tasks";
 
