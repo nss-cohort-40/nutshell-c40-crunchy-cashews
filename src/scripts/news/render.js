@@ -1,24 +1,31 @@
-import newstoHTML from "./htmlfactory.js"
+import newsToHTML from "./htmlfactory.js"
+import newsApi from "./data.js"
 
 
-
-function getAndRenderAllArticles() {
-  mainSection.innerHTML = ""
-  newsApi.getAllArticles().then(news => {
-      news.sort(sortAZ).map(newstoHTML).forEach(renderToDOM)
-  })
-}
-
-getAndRenderAllArticles()
-
-
-function renderToDOM(htmlRep) {
-  mainSection.innerHTML += htmlRep;
+  
+mainSection.addEventListener("click", (event) => {
+  if (event.target.id.startsWith("save--")) {
+    const newsArticle = event.target.id.split("--")[1]
+    newsApi.addNewArticle(newsArticle)
+      .then(getAndRenderAllArticles)
   }
+})
+
+getAndRenderAllArticles = (articles) => {
+  const mainSection = document.querySelector("#main-section");
+  mainSection.innerHTML = ""
+
+  articles.forEach(article => {
+    const articleHtml = newsToHTML(article);
+    mainSection.innerHTML += articleHtml;
+
+  });
 
 
-function sortAZ(a, b) {
-  return a.title.localeCompare(b.title)
+
+getAndRenderAllArticles();
+
 }
 
-export default renderNews
+
+export default {getAndRenderAllArticles}
