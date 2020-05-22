@@ -22,6 +22,7 @@ const events = {
         document.querySelector("#event-date-input").value === "" ||
         document.querySelector("#event-location-input").value === ""
       ) {
+        event.preventDefault();
         window.alert("All fields must be completed DUMMY");
       } else {
         let nameInput = document.querySelector("#event-name-input").value;
