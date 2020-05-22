@@ -1,3 +1,6 @@
+// Author: Kirk
+// Function: Uuhhh... put things on DOM and then
+// some other stuff that shouldn't be here I'm guessing.
 import API from "./data.js";
 
 let mainSection = document.querySelector("#main-section");
@@ -5,11 +8,13 @@ let mainSection = document.querySelector("#main-section");
 const tasksHTML = {
   btnNewTask: function () {
     mainSection.innerHTML = "";
-    const newTaskbtn = `
+    let newTaskBtn = `
         <button id="newTask--btn">New Task</button>
         `;
-    mainSection.innerHTML = newTaskbtn;
-    // renderTaskCard () {}
+    mainSection.innerHTML = newTaskBtn;
+    newTaskBtn += API.getTasksByUserId().then((tasks) =>
+      tasksHTML.renderTaskCard(tasks)
+    );
   },
   renderTaskForm: function () {
     mainSection.addEventListener("click", (event) => {
@@ -37,11 +42,12 @@ const tasksHTML = {
         let newTaskInput = document.querySelector("#newTaskInput").value;
         let completeByDate = document.querySelector("#completeByDateInput")
           .value;
-        let activeUser = sessionStorage.activeUser.value;
+        let activeUser = parseInt(sessionStorage.activeUser);
         if (newTaskInput != "" && completeByDate != "") {
           API.addNewTask(
-            tasksHTML.makeTaskObj(newTaskInput, completeByDate, activeUser)
+            tasksHTML.makeTaskObj(activeUser, newTaskInput, completeByDate)
           );
+          document.querySelector("#newTaskForm").reset();
         } else {
           window.alert("Completely Fill out the New Task Form Please!");
         }
@@ -55,6 +61,21 @@ const tasksHTML = {
       completeByDate: taskCompleteDate,
       complete: false,
     };
+  },
+  makeTaskCard: function (task) {
+    return `
+      <div class="taskCard">
+      <h3 class="taskOutput">${task.task}</h3>
+      <p class="taskDateOutput">${task.completeByDate}</p>
+    <input type="checkbox" id="taskComplete--${task.id}" value="false">
+    <label for="taskComplete--${task.id}">Check if complete:</label>
+      <button id="delete--${task.id}">Delete</button>
+      `;
+  },
+  renderTaskCard: function (taskArray) {
+    taskArray.forEach((task) => {
+      mainSection.innerHTML += tasksHTML.makeTaskCard(task);
+    });
   },
 };
 export default tasksHTML;

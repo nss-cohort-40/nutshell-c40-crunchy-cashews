@@ -2,8 +2,8 @@ import API from "./data.js";
 import tasksHTML from "../tasks/htmlFactory.js";
 // import navBar from "/src/scripts/messages/main.js"
 import eventsAPI from "../events/data.js";
-import render from "/src/scripts/events/render.js";
-import events from "/src/scripts/events/main.js";
+// import render from "/src/sripts/events/render.js";
+// import events from "/src/scripts/events/main.js";
 
 // Adds event listener to Register button (ER)
 const welcome = document.querySelector("#welcome");
