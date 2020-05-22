@@ -1,13 +1,15 @@
-// KS
+// Author: Kirk
+// Purpose: get tasks from database and delete tasks from database
 
 const taskDatabase = "http://localhost:8080/tasks";
 
-let activeId = sessionStorage.activeUser;
 const API = {
+  // incomplete tasks
   getTasksByUserId: function () {
-    return fetch(`${taskDatabase}?userId=${activeId}`).then((response) =>
-      response.json()
-    );
+    let activeId = parseInt(sessionStorage.activeUser);
+    return fetch(
+      `${taskDatabase}?userId=${activeId}&complete=false`
+    ).then((response) => response.json());
   },
   addNewTask: function (creation) {
     return fetch(`${taskDatabase}`, {
@@ -16,6 +18,20 @@ const API = {
         "Content-Type": "application/json",
       },
       body: JSON.stringify(creation),
+    }).then((response) => response.json());
+  },
+  deleteTask: function (taskId) {
+    return fetch(`${taskDatabase}/${taskId}`, {
+      method: "DELETE",
+    });
+  },
+  editTask: function (taskId) {
+    return fetch(`${taskDatabase}/${taskId}`, {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(taskObj),
     }).then((response) => response.json());
   },
 };
