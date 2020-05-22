@@ -1,31 +1,11 @@
-import newsToHTML from "./htmlfactory.js"
-import newsApi from "./data.js"
+import createNewsArticle from "./htmlfactory.js"
 
+const renderArticles = articles => {
+    mainSection.innerHTML = ""
 
-  
-mainSection.addEventListener("click", (event) => {
-  if (event.target.id.startsWith("save--")) {
-    const newsArticle = event.target.id.split("--")[1]
-    newsApi.addNewArticle(newsArticle)
-      .then(getAndRenderAllArticles)
+    articles.forEach(article => {
+      const newsArticle = createNewsArticle(article);
+      mainSection.innerHTML += newsArticle;
+    })
   }
-})
-
-getAndRenderAllArticles = (articles) => {
-  const mainSection = document.querySelector("#main-section");
-  mainSection.innerHTML = ""
-
-  articles.forEach(article => {
-    const articleHtml = newsToHTML(article);
-    mainSection.innerHTML += articleHtml;
-
-  });
-
-
-
-getAndRenderAllArticles();
-
-}
-
-
-export default {getAndRenderAllArticles}
+    export default renderArticles;

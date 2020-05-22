@@ -5,13 +5,13 @@ const newsApi = {
     return fetch(`${newsURL}`)
       .then(resp => resp.json())
   },
-  addNewArticle(newArticle) {
-    return fetch(`${newsURL}/${newArticle}`, {
+  addNewsArticle(newsArticle) {
+    return fetch(`${newsURL}/${newsArticle}`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json"
       },
-      body: JSON.stringify(newArticle)
+      body: JSON.stringify(newsArticle)
     })
 
   }

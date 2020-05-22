@@ -1,6 +1,6 @@
 
   //entry component
-  const newsToHTML = (news) => {
+  const createNewsArticle = (news) => {
     return  `
     <div class="news_card">
     <h3><a href="${news.url}"></h3>
@@ -15,24 +15,24 @@ const createNewsAddForm = () => `
 <article id="createNewsform">
 <header>Add New Article</header>
 <div class="news-form__input">
-<input type="text" id="newsArticleTitle" placeholder="title" />
-          <input type="url" id="newsArticleURL" placeholder="Link to Article" />
+<input type="text" id="newsTitle" placeholder="title" />
+          <input type="url" id="newsURL" placeholder="Link to Article" />
         </div>
 <div class="news-form__submit">
-<button id="saveNewsArticle">Save</button></div>
+<button id="saveNews">Save</button></div>
 </article>
 `;
 
-
       //createEntry
- const createNewsObject = (url, title, synopsis) => {
+ const createNewsObject = (url, title, synopsis, timestamp) => {
         return {
             "url": url,
             "title": title,
             "synopsis": synopsis,
-            "mood": mood
+            "timestamp": timestamp,
+            "userId": userId
         }
       };
    
-export default { newsToHTML, createNewsObject, createNewsAddForm}
+export default { createNewsArticle, createNewsObject, createNewsAddForm}
 
