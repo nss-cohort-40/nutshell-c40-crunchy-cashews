@@ -5,6 +5,9 @@ import render from "/src/scripts/events/render.js";
 import events from "/src/scripts/events/main.js";
 import messageAPI from "/src/scripts/messages/data.js"
 import renderForms from "/src/scripts/messages/render.js"
+import newsAPI from "../news/data.js";
+import renderNews from "../news/render.js"
+
 
 // Adds event listener to Register button (ER)
 const welcome = document.querySelector("#welcome");
@@ -106,7 +109,8 @@ const navBar = {
       if (event.target.id.startsWith("messages")) {
         messageAPI.getAllMessages().then(renderForms.renderAllMessages);
       } else if (event.target.id.startsWith("news")) {
-        newsApi.getAllArticles().then(renderNews);
+        newsAPI.getAllArticles().then(renderNews.renderArticles)
+
       } else if (event.target.id.startsWith("events")) {
         eventsAPI.getEvents().then(render.eventsResults);
         render.addEvent();
