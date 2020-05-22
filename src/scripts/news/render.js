@@ -3,30 +3,27 @@
     Purpose: rendering news articles to the main section container in our nav bar
 */
 
+import newsHTML from "/src/scripts/news/htmlfactory.js"
 
-
-import createNewsArticle from "./htmlfactory.js"
+const mainSection = document.querySelector("#main-section");
+const otherSection = document.querySelector("#other-section");
 
 const renderNews = {
 
-  mainSection: document.querySelector("#main-section"),
+    renderArticles: news => {
+      mainSection.innerHTML = ""
+      otherSection.innerHTML = ""
+      for (let i = 0; i < news.length; i++) {
+        mainSection.innerHTML += newsHTML.createNewsArticle(news[i])
+      }
+    },
 
-  renderArticles: articles => {
-    mainSection.innerHTML = ""
+      newsForm: document.querySelector("#other-section"),
+        renderNewsAddForm: () => {
+          newsForm.innerHTML = createNewsAddForm();
+        }
 
-    articles.forEach(article => {
-      const newsArticle = createNewsArticle(article);
-      mainSection.innerHTML += newsArticle;
-    })
-  },
+    }
 
-  newsForm: document.querySelector("#other-section"),
-  renderNewsAddForm: () => {
-    newsForm.innerHTML = createNewsAddForm();
-  }
-
-}
-
-export default {
-  renderNews
-}
+export default renderNews
+    

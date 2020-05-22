@@ -3,11 +3,9 @@
     Purpose: newsApi manager to get and add news articles 
 */
 
-
-
 const newsURL = "http://localhost:8080/news"
 
-const newsApi = {
+const newsAPI = {
   getAllArticles() {
     return fetch(`${newsURL}`)
       .then(resp => resp.json())
@@ -25,4 +23,4 @@ const newsApi = {
 };
 
 
-export default newsApi
+export default newsAPI

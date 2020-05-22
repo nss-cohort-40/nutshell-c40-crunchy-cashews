@@ -5,19 +5,19 @@
 
 const newsHTML = {
 
-  createNewsArticle (news) {
+  createNewsArticle(news) {
     return `
     <div id="news-form">
-    <section class="news--${news.id}">
-    <h3><a href="${news.url}"></h3>
-    <h1><em><a href="${news.title}</em></a></h1>
+    <h3><a href="${news.url}"></a></h3>
+    <h1><em>${news.title}</em></h1>
     <p>${news.synopsis}</p>
+    <p>${news.timestamp}</p>
     <button class="add--news--btn" id="addNews--btn">Add News Article</button>
         </div>
     `
   },
 
-  createNewsAddForm ()  {
+  createNewsAddForm() {
     return `
 <article id="createNewsform">
 <header>Add New Article</header>
@@ -30,17 +30,15 @@ const newsHTML = {
 </article>
 `
   },
-
-articleObject (url, title, synopsis) {
-  return {
+  articleObject(url, title, synopsis, timestamp) {
+    return {
       "link": url,
       "title": title,
-      "synopsis": synopsis
+      "synopsis": synopsis,
+      "timestamp": timestamp
+    }
   }
-}
 
 }
 
-export default {
-  newsHTML
-}
+export default newsHTML
