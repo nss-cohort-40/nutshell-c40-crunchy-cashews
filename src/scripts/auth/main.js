@@ -1,10 +1,14 @@
 import API from "./data.js";
+import tasksHTML from "../tasks/htmlFactory.js";
+import eventsAPI from "../events/data.js";
 import tasksHTML from "/src/scripts/tasks/htmlFactory.js";
 import taskCardEvents from "/src/scripts/tasks/main.js";
 // import navBar from "/src/scripts/messages/main.js"
 import eventsAPI from "/src/scripts/events/data.js";
 import render from "/src/scripts/events/render.js";
 import events from "/src/scripts/events/main.js";
+import messageAPI from "/src/scripts/messages/data.js"
+import renderForms from "/src/scripts/messages/render.js"
 import newsAPI from "../news/data.js";
 import renderNews from "../news/render.js";
 
@@ -106,7 +110,7 @@ const navBar = {
     let nav = document.querySelector("#nav-bar");
     nav.addEventListener("click", (event) => {
       if (event.target.id.startsWith("messages")) {
-        messageAPI.getAllMessages().then(renderForms.renderRegisterForms);
+        messageAPI.getAllMessages().then(renderForms.renderAllMessages);
       } else if (event.target.id.startsWith("news")) {
         newsAPI.getAllArticles().then(renderNews.renderArticles);
       } else if (event.target.id.startsWith("events")) {
