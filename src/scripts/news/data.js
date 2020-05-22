@@ -1,3 +1,10 @@
+/*
+    Author: Roxanne
+    Purpose: newsApi manager to get and add news articles 
+*/
+
+
+
 const newsURL = "http://localhost:8080/news"
 
 const newsApi = {

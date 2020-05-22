@@ -1,3 +1,10 @@
+/*
+    Author: Roxanne
+    Purpose: rendering news articles to the main section container in our nav bar
+*/
+
+
+
 import createNewsArticle from "./htmlfactory.js"
 
 const renderNews = {
