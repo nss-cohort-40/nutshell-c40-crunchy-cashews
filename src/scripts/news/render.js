@@ -1,24 +1,25 @@
 import createNewsArticle from "./htmlfactory.js"
 
-const mainSection = document.querySelector("#main-section")
+const renderNews = {
 
-const renderArticles = articles => {
-  mainSection.innerHTML = ""
+  mainSection: document.querySelector("#main-section"),
 
-  articles.forEach(article => {
-    const newsArticle = createNewsArticle(article);
-    mainSection.innerHTML += newsArticle;
-  })
+  renderArticles: articles => {
+    mainSection.innerHTML = ""
+
+    articles.forEach(article => {
+      const newsArticle = createNewsArticle(article);
+      mainSection.innerHTML += newsArticle;
+    })
+  },
+
+  newsForm: document.querySelector("#other-section"),
+  renderNewsAddForm: () => {
+    newsForm.innerHTML = createNewsAddForm();
+  }
+
 }
-
-const newsForm = document.querySelector("#other-section")
-
-const renderNewsAddForm = () => {
-  newsForm.innerHTML = createNewsAddForm();
-}
-
 
 export default {
-  renderArticles,
-  renderNewsAddForm
+  renderNews
 }

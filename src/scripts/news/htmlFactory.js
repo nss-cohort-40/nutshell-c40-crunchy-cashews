@@ -1,15 +1,17 @@
-const createNewsArticle = (news) => {
-  `
+const newsHTML = {
+
+  createNewsArticle (news) {
+    return `
     <section class="news--${news.id}">
     <h3><a href="${news.url}"></h3>
     <h1><em><a href="${news.title}</em></a></h1>
     <p>${news.synopsis}</p>
         </div>
     `
-}
+  },
 
-const createNewsAddForm = () => {
-  `
+  createNewsAddForm ()  {
+    return `
 <article id="createNewsform">
 <header>Add New Article</header>
 <div class="news-form__input">
@@ -20,10 +22,10 @@ const createNewsAddForm = () => {
 <button id="saveNews">Save</button></div>
 </article>
 `
+  }
+
 }
 
-
 export default {
-  createNewsArticle,
-  createNewsAddForm
+  newsHTML
 }
