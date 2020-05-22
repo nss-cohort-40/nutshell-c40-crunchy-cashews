@@ -110,9 +110,6 @@ const navBar = {
         messageAPI.getAllMessages().then(renderForms.renderRegisterForms);
       } else if (event.target.id.startsWith("news")) {
         newsApi.getAllArticles().then(renderArticles);
-        htmlFactory.createNewsArticle();
-        htmlFactory.createNewsAddForm();
-        htmlFactory.createNewsObject();
 
       } else if (event.target.id.startsWith("events")) {
         eventsAPI.getEvents().then(render.eventsResults);

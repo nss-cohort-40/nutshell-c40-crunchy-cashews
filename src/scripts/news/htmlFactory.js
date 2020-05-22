@@ -22,19 +22,8 @@ const createNewsAddForm = () => {
 `
 }
 
-//createEntry
-const createNewsObject = (url, title, synopsis, timestamp) => {
-  {
-    "url": url,
-    "title": title,
-    "synopsis": synopsis,
-    "timestamp": timestamp,
-    "userId": userId
-  }
-}
 
 export default {
   createNewsArticle,
-  createNewsAddForm,
-  createNewsObject
+  createNewsAddForm
 }
