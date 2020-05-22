@@ -1,9 +1,3 @@
-// function renderForms () {
-//     stuffInAuth.addEventListener(click , (event) => {
-//         if (event.click.target
-//     })
-// }
-
 const messageDomContainer = {
 
     messageForm(newMessage) {
@@ -20,7 +14,7 @@ const messageDomContainer = {
         return`
         <article class="entryLog">
         <h3>Messages</h3>
-        <section>${submittedMessage.chatHistory}</section>
+        <section>${submittedMessage.message}</section>
         <button id="edit--${submittedMessage.id}">Edit</button>
         <button id="save--${submittedMessage.id}">Save</button>
         </article>

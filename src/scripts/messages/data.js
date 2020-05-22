@@ -5,5 +5,6 @@ const messageAPI = {
                 response.json()
             );
     }
+}
 
 export default messageAPI
