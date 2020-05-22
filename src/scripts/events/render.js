@@ -1,22 +1,22 @@
 import createComponent from "/src/scripts/events/htmlFactory.js"
 import events from "/src/scripts/events/main.js"
 
-const mainSection = document.querySelector("#main-section")
-const otherSection = document.querySelector("#other-section")
-const eventFormDiv = document.querySelector("#event-form")
+const mainSection = document.querySelector("#main-section");
+const otherSection = document.querySelector("#other-section");
+const eventFormDiv = document.querySelector("#event-form");
 
 const render = {
-  addEvent () {
+  addEvent() {
     mainSection.innerHTML = createComponent.addEvent();
   },
-  eventsResults (results) {
-    otherSection.innerHTML = ""
+  eventsResults(results) {
+    otherSection.innerHTML = "";
     for (let i = 0; i < results.length; i++) {
       otherSection.innerHTML += createComponent.eventsResults(results[i]);
       // events.deleteEventEL();
     }
   },
-  eventForm () {
+  eventForm() {
     event.preventDefault();
     mainSection.innerHTML += createComponent.eventForm();
   },
@@ -37,4 +37,4 @@ const render = {
   }
 }
 
-export default render
+export default render;

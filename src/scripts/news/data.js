@@ -1,21 +1,26 @@
-// Api Manager for News -RN
+/*
+    Author: Roxanne
+    Purpose: newsApi manager to get and add news articles 
+*/
 
-const newsApi = {
+const newsURL = "http://localhost:8080/news"
+
+const newsAPI = {
   getAllArticles() {
-    return fetch("http://localhost:8080/news")
-    .then(resp => resp.json())
+    return fetch(`${newsURL}`)
+      .then(resp => resp.json())
   },
-    addNewArticle(newArticle) {
-    return fetch("http://localhost:8080/news", {
+  addNewsArticle(newsArticle) {
+    return fetch(`${newsURL}/${newsArticle}`, {
       method: "POST",
-      headers:{
+      headers: {
         "Content-Type": "application/json"
       },
-      body: JSON.stringify(newArticle)
-   })
- 
-}};
+      body: JSON.stringify(newsArticle)
+    })
 
-  
-  export default newsApi
-  
+  }
+};
+
+
+export default newsAPI
