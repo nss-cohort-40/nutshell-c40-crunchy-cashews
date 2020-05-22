@@ -3,7 +3,7 @@
     Purpose: rendering news articles to the main section container in our nav bar
 */
 
-import newsHTML from "/src/scripts/news/htmlfactory.js"
+import newsHTML from "/src/scripts/news/htmlFactory.js"
 
 const mainSection = document.querySelector("#main-section");
 const otherSection = document.querySelector("#other-section");
