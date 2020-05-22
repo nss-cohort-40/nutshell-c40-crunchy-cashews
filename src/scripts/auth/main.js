@@ -106,12 +106,17 @@ const navBar = {
         messageAPI.getAllMessages().then(renderForms.renderRegisterForms);
       } else if (event.target.id.startsWith("news")) {
         newsApi.getAllArticles().then(renderNews);
+
       } else if (event.target.id.startsWith("events")) {
-        eventsAPI.getEvents().then(render.eventsResults);
+        eventsAPI.getEvents()
+          .then(render.eventsResults)
+          .then(events.deleteEventEL)
+          .then(events.editEventEL)
         render.addEvent();
         events.addEventEL();
-        events.saveEventEL();
+        
         console.log("clicked events");
+
       } else if (event.target.id.startsWith("tasks")) {
         console.log("clicked tasks");
         tasksHTML.btnNewTask();

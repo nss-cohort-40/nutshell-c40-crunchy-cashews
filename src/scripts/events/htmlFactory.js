@@ -1,3 +1,7 @@
+import eventsAPI from "/src/scripts/events/data.js";
+import render from "/src/scripts/events/render.js";
+import events from "/src/scripts/events/main.js"
+
 let mainSection = document.querySelector("#main-section");
 
 const createComponent = {
@@ -14,8 +18,8 @@ const createComponent = {
     <p>Name: ${results.name}</p>
     <p>Date: ${results.date}</p>
     <p>Location: ${results.location}</p>
-    <button id="edit-event">Edit Event</button>
-    <button id="delete-event">Delete Event</button>
+    <button id="editEvent--${results.id}">Edit Event</button>
+    <button id="deleteEvent--${results.id}">Delete Event</button>
     </div>
     ` 
   },
@@ -37,37 +41,24 @@ const createComponent = {
           <input type="text" id="event-date-input">
           <label for="location"><b>Event Location</b></label>
           <input type="text" id="event-location-input">
+          <input type="hidden" id="eventId" value="">
           <button type="submit" id="saveEvent--btn">Save Event</button>
         </fieldset>
     </form>
     `
+  },
+  editEvent (id) {
+    const updatedObject = {
+      name: document.querySelector("#event-name-input").value,
+      date: document.querySelector("#event-date-input").value,
+      location: document.querySelector("#event-location-input").value
+    };
+    eventsAPI.editEvent(id, updatedObject).then( () => {
+      document.querySelector("#eventId").value = ""
+      eventsAPI.getEvents().then(render.eventsResults)
+    })
   }
 }
 
 export default createComponent
 
-  // renderEventForm: function () {
-  //   mainSection.addEventListener("click", event => {
-  //     if (event.target.id.startsWith("addEvent--")) {
-  //       // mainSection.innerHTML = "";
-  //       const eventFormDiv = document.querySelector("#event-form")
-  //       eventFormDiv.innerHTML = "";
-  //       event.preventDefault();
-  //       const newEventForm = `
-  //       <form id="newEventForm">
-  //       <fieldset id="newEventField">
-  //         <label for="name"><b>Event Name</b></label>
-  //         <input type="text" id="event-name-input">
-  //         <label for="date"><b>Event Date</b></label>
-  //         <input type="text" id="event-date-input">
-  //         <label for="location"><b>Event Location</b></label>
-  //         <input type="text" id="event-location-input">
-  //         <button type="submit" id="saveEvent--btn">Save Event</button>
-  //       </fieldset>
-  //       </form>
-  //       `;
-  //       eventFormDiv.innerHTML += newEventForm;
-  //       const addEventButton = document.querySelector("#addEvent--btn");
-  //     }
-  //   })
-  // },
