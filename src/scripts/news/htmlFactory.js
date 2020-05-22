@@ -1,29 +1,25 @@
-//Create news article and factory function - RN
-
-const newstoHTML = (news) => {
-    return `
-    <div class="news_card">
-    <h3><a href="${news.url}"></h3>
-    <h1><em><a href="${news.title}</em></a></h1>
-    <p>${news.synopsis}</p>
-    <button id="saveNews--${news.id}" class="save_btn">save</button>
-        </div>
-    `
-}
 
 
 const listArticles = (articleArray) => {
-    let articleList = document.querySelector("#main-section");
-    articleList.innerHTML = "";
-    articleArray.forEach(article => {
-        articleList.appendChild(articleMaker(article))
-    })
+  let articleList = document.querySelector("#main-section");
+  articleList.innerHTML = "";
+  articleArray.forEach(article => {
+    articleList.appendChild(articleMaker(article))
+  })
 };
 
+//createEntry
+const createNewsObject = (url, title, synopsis) => {
+    return {
+      "url": url,
+      "title": title,
+      "synopsis": synopsis,
+      "mood": mood
+    };
 
 
-
-export default {
-    newstoHTML,
-    listArticles
-}
+    export default {
+      newstoHtml,
+      createNewsObject,
+      listArticles
+    }

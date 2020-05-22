@@ -1,17 +1,24 @@
-//  Take htmlFactory and render to the DOM -RN
-
-import articleMaker from "./htmlFactory.js"
+import newstoHTML from "./htmlfactory.js"
 
 
-const renderNews = (newsArticle) => {
-  const mainContainer = document.querySelector("#main-section");
-  mainContainer.innerHTML = "";
 
-  newsArticle.forEach(article => {
-    const newsArticleHTML = renderNews(article);
-    mainContainer.innerHTML += newsArticleHTML;
+function getAndRenderAllArticles() {
+  mainSection.innerHTML = ""
+  newsApi.getAllArticles().then(news => {
+      news.sort(sortAZ).map(newstoHTML).forEach(renderToDOM)
+  })
+}
 
-  });
-};
+getAndRenderAllArticles()
+
+
+function renderToDOM(htmlRep) {
+  mainSection.innerHTML += htmlRep;
+  }
+
+
+function sortAZ(a, b) {
+  return a.title.localeCompare(b.title)
+}
 
 export default renderNews
