@@ -1,8 +1,7 @@
-
 //Create news article and factory function - RN
 
 const newstoHTML = (news) => {
-    return  `
+    return `
     <div class="news_card">
     <h3><a href="${news.url}"></h3>
     <h1><em><a href="${news.title}</em></a></h1>
@@ -13,16 +12,18 @@ const newstoHTML = (news) => {
 }
 
 
- const listArticles = (articleArray) => {
+const listArticles = (articleArray) => {
     let articleList = document.querySelector("#main-section");
-        articleList.innerHTML = "";
-        articleArray.forEach( article => {
-          articleList.appendChild(articleMaker(article))
-        })
-      };
+    articleList.innerHTML = "";
+    articleArray.forEach(article => {
+        articleList.appendChild(articleMaker(article))
+    })
+};
 
 
-        
-   
-export default {newstoHTML, listArticles}
 
+
+export default {
+    newstoHTML,
+    listArticles
+}
