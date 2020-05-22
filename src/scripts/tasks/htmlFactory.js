@@ -6,6 +6,7 @@ import API from "./data.js";
 let mainSection = document.querySelector("#main-section");
 
 const tasksHTML = {
+  mainSection: document.querySelector("#main-section"),
   btnNewTask: function () {
     mainSection.innerHTML = "";
     let newTaskBtn = `
@@ -67,8 +68,8 @@ const tasksHTML = {
       <div class="taskCard">
       <h3 class="taskOutput">${task.task}</h3>
       <p class="taskDateOutput">${task.completeByDate}</p>
-    <input type="checkbox" id="taskComplete--${task.id}" value="false">
-    <label for="taskComplete--${task.id}">Check if complete:</label>
+      <label for="taskComplete--${task.id}">Check if complete:</label>
+      <input type="checkbox" id="taskComplete--${task.id}" value="false"></br>
       <button id="delete--${task.id}">Delete</button>
       `;
   },

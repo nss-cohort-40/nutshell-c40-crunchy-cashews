@@ -1,5 +1,7 @@
 import API from "./data.js";
 import tasksHTML from "../tasks/htmlFactory.js";
+import taskCardEvents from "../tasks/main.js";
+import tasksAPI from "../tasks/data.js";
 // import navBar from "/src/scripts/messages/main.js"
 import eventsAPI from "../events/data.js";
 // import render from "/src/sripts/events/render.js";
@@ -113,10 +115,10 @@ const navBar = {
         events.saveEventEL();
         console.log("clicked events");
       } else if (event.target.id.startsWith("tasks")) {
-        console.log("clicked tasks");
         tasksHTML.btnNewTask();
         tasksHTML.renderTaskForm();
         tasksHTML.saveTaskToDb();
+        taskCardEvents.deleteTaskCard();
       }
     });
   },

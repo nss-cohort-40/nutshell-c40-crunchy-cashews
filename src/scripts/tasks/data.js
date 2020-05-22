@@ -3,11 +3,12 @@
 const taskDatabase = "http://localhost:8080/tasks";
 
 const API = {
+  // incomplete tasks
   getTasksByUserId: function () {
     let activeId = parseInt(sessionStorage.activeUser);
-    return fetch(`${taskDatabase}?userId=${activeId}`).then((response) =>
-      response.json()
-    );
+    return fetch(
+      `${taskDatabase}?userId=${activeId}&complete=false`
+    ).then((response) => response.json());
   },
   addNewTask: function (creation) {
     return fetch(`${taskDatabase}`, {
