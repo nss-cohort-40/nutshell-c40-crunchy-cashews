@@ -1,12 +1,12 @@
-// Api Manager for News -RN
+const newsURL = http://localhost:8080/news"
 
 const newsApi = {
   getAllArticles() {
-    return fetch("http://localhost:8080/news")
+    return fetch(`${newsURL}`)
     .then(resp => resp.json())
   },
     addNewArticle(newArticle){
-    return fetch("http://localhost:8080/news"`/${newArticle}`, {
+    return fetch(`${newsURL}/${newArticle}`, {
       method: "POST",
       headers:{
         "Content-Type": "application/json"
