@@ -1,8 +1,8 @@
 // Author: Kirk
 // Purpose: To make delete button and
 // checkbox work on task card
-import el from "../tasks/htmlFactory.js";
-import API from "../tasks/data.js";
+import el from "/src/scripts/tasks/htmlFactory.js";
+import API from "/src/scripts/tasks/data.js";
 
 let taskCardEvents = {
   deleteTaskCard() {
@@ -10,7 +10,9 @@ let taskCardEvents = {
       if (event.target.id.startsWith("delete--")) {
         console.log("clicked delete", event);
         const deleteId = event.target.id.split("--")[1];
-        API.deleteTask(deleteId);
+        API.deleteTask(deleteId)
+          .then(API.getTasksByUserId)
+          .then((tasks) => el.renderTaskCard(tasks));
       }
     });
   },

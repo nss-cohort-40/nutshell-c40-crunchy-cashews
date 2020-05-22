@@ -3,24 +3,26 @@
 // some other stuff that shouldn't be here I'm guessing.
 import API from "./data.js";
 
-let mainSection = document.querySelector("#main-section");
+// let mainSection = document.querySelector("#main-section");
+// let otherSection = document.querySelector("#other-section");
 
 const tasksHTML = {
   mainSection: document.querySelector("#main-section"),
+  otherSection: document.querySelector("#other-section"),
   btnNewTask: function () {
-    mainSection.innerHTML = "";
+    tasksHTML.mainSection.innerHTML = "";
     let newTaskBtn = `
         <button id="newTask--btn">New Task</button>
         `;
-    mainSection.innerHTML = newTaskBtn;
-    newTaskBtn += API.getTasksByUserId().then((tasks) =>
+    tasksHTML.mainSection.innerHTML = newTaskBtn;
+    tasksHTML.otherSection.innerHTML += API.getTasksByUserId().then((tasks) =>
       tasksHTML.renderTaskCard(tasks)
     );
   },
   renderTaskForm: function () {
-    mainSection.addEventListener("click", (event) => {
+    tasksHTML.mainSection.addEventListener("click", (event) => {
       if (event.target.id.startsWith("newTask--")) {
-        mainSection.innerHTML = "";
+        tasksHTML.mainSection.innerHTML = "";
         event.preventDefault();
         const newTaskForm = `
         <form id="newTaskForm">
@@ -32,12 +34,12 @@ const tasksHTML = {
         <button id="saveNewTask--btn">Save</button>
         </fieldset></form>
         `;
-        mainSection.innerHTML = newTaskForm;
+        tasksHTML.mainSection.innerHTML = newTaskForm;
       }
     });
   },
   saveTaskToDb: function () {
-    mainSection.addEventListener("click", (event) => {
+    tasksHTML.mainSection.addEventListener("click", (event) => {
       if (event.target.id.startsWith("saveNewTask--")) {
         event.preventDefault();
         let newTaskInput = document.querySelector("#newTaskInput").value;
@@ -74,8 +76,9 @@ const tasksHTML = {
       `;
   },
   renderTaskCard: function (taskArray) {
+    tasksHTML.otherSection.innerHTML = "";
     taskArray.forEach((task) => {
-      mainSection.innerHTML += tasksHTML.makeTaskCard(task);
+      tasksHTML.otherSection.innerHTML += tasksHTML.makeTaskCard(task);
     });
   },
 };
